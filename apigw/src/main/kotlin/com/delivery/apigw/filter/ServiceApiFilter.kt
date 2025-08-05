@@ -22,7 +22,6 @@ class ServiceApiFilter: AbstractGatewayFilterFactory<ServiceApiFilter.Config>(Co
 
             mono
 
-
         }
     }
 
