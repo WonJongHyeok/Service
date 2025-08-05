@@ -1,8 +1,8 @@
 package org.delivery.api.domain.storemenu.service;
 
 import lombok.RequiredArgsConstructor;
-import org.delivery.api.common.error.ErrorCode;
-import org.delivery.api.common.exception.ApiException;
+import org.delivery.common.error.ErrorCode;
+import org.delivery.common.exception.ApiException;
 import org.delivery.db.storemenu.StoreMenuEntity;
 import org.delivery.db.storemenu.StoreMenuRepository;
 import org.delivery.db.storemenu.enums.StoreMenuStatus;
@@ -18,7 +18,9 @@ public class StoreMenuService {
     private final StoreMenuRepository storeMenuRepository;
 
     public StoreMenuEntity getStoreMenuWithThrow(Long id){
-        var entity = storeMenuRepository.findFirstByIdAndStatusOrderByIdDesc(id,StoreMenuStatus.REGISTERED);
+        var entity = Optional.ofNullable(
+                storeMenuRepository.findFirstByIdAndStatusOrderByIdDesc(id,StoreMenuStatus.REGISTERED)
+        );
         return entity.orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
 

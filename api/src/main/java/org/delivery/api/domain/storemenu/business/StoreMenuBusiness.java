@@ -1,7 +1,8 @@
 package org.delivery.api.domain.storemenu.business;
 
 import lombok.RequiredArgsConstructor;
-import org.delivery.api.common.annotation.Business;
+import org.delivery.api.domain.store.service.StoreService;
+import org.delivery.common.annotation.Business;
 import org.delivery.api.domain.storemenu.controller.model.StoreMenuRegisterRequest;
 import org.delivery.api.domain.storemenu.controller.model.StoreMenuResponse;
 import org.delivery.api.domain.storemenu.converter.StoreMenuConverter;
@@ -18,11 +19,15 @@ public class StoreMenuBusiness {
 
     private final StoreMenuConverter storeMenuConverter;
 
+    private final StoreService storeService;
+
     public StoreMenuResponse register(
             StoreMenuRegisterRequest request
     ) {
         // req -> entity -> save -> response
-        var entity = storeMenuConverter.toEntity(request);
+        var storeEntity = storeService.getStoreWithThrow(request.getStoreId());
+
+        var entity = storeMenuConverter.toEntity(request, storeEntity);
         var newEntity = storeMenuService.register(entity);
         var response = storeMenuConverter.toResponse(newEntity);
         return response;

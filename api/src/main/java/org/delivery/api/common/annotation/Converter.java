@@ -9,11 +9,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.TYPE)
+/*@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Service
 public @interface Converter {
 
     @AliasFor(annotation = Component.class)
     String value() default "";
-}
+}*/

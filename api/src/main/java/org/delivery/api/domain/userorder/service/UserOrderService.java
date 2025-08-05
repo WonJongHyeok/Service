@@ -1,8 +1,8 @@
 package org.delivery.api.domain.userorder.service;
 
 import lombok.RequiredArgsConstructor;
-import org.delivery.api.common.error.ErrorCode;
-import org.delivery.api.common.exception.ApiException;
+import org.delivery.common.error.ErrorCode;
+import org.delivery.common.exception.ApiException;
 import org.delivery.db.userorder.UserOrderEntity;
 import org.delivery.db.userorder.UserOrderRepository;
 import org.delivery.db.userorder.enums.UserOrderStatus;
@@ -22,7 +22,9 @@ public class UserOrderService {
             Long id,
             Long userId
     ){
-        return userOrderRepository.findAllByIdAndUserId(id, userId)
+        return Optional.ofNullable(
+                    userOrderRepository.findAllByIdAndUserId(id, userId)
+                )
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
 
@@ -30,7 +32,9 @@ public class UserOrderService {
         Long id,
         Long userId
     ){
-        return userOrderRepository.findAllByIdAndStatusAndUserId(id, UserOrderStatus.REGISTERED, userId)
+        return Optional.ofNullable(
+                    userOrderRepository.findAllByIdAndStatusAndUserId(id, UserOrderStatus.REGISTERED, userId)
+                )
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
 

@@ -48,4 +48,6 @@ public class StoreEntity extends BaseEntity {
 
     @Column(length = 20)
     private String phoneNumber;
+
+
 }

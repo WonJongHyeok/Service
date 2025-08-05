@@ -5,10 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.delivery.api.common.error.ErrorCode;
-import org.delivery.api.common.error.ErrorCodeIfs;
+import org.delivery.common.error.ErrorCode;
+import org.delivery.common.error.ErrorCodeIfs;
 
-@Data
+/*@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -52,4 +52,4 @@ public class Result {
                 .build();
     }
 
-}
+}*/

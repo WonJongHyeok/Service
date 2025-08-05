@@ -1,3 +1,4 @@
+/*
 package org.delivery.db.storemenu;
 
 import org.delivery.db.storemenu.enums.StoreMenuStatus;
@@ -17,3 +18,4 @@ public interface StoreMenuRepository extends JpaRepository<StoreMenuEntity, Long
     List<StoreMenuEntity> findAllByStoreIdAndStatusOrderBySequenceDesc(Long storeId, StoreMenuStatus status);
 
 }
+*/
